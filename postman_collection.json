@@ -1,0 +1,461 @@
+{
+    "info": {
+        "name": "Laravel API",
+        "description": "Postman collection for Laravel API",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Users",
+            "item": [
+                {
+                    "name": "users.index",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/users",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "users"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "users.store",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/users",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "users"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "users.show",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/users\/{user}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "users",
+                                "{user}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "users.update",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/users\/{user}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "users",
+                                "{user}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "users.destroy",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/users\/{user}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "users",
+                                "{user}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Announcement",
+            "item": [
+                {
+                    "name": "announcement.index",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/announcement",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "announcement"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "announcement.store",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/announcement",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "announcement"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "announcement.show",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/announcement\/{announcement}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "announcement",
+                                "{announcement}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "announcement.update",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/announcement\/{announcement}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "announcement",
+                                "{announcement}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "announcement.destroy",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/announcement\/{announcement}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "announcement",
+                                "{announcement}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Category",
+            "item": [
+                {
+                    "name": "Category.index",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/Category",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "Category"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Category.store",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/Category",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "Category"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Category.show",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/Category\/{Category}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "Category",
+                                "{Category}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Category.update",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/Category\/{Category}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "Category",
+                                "{Category}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Category.destroy",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/Category\/{Category}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "Category",
+                                "{Category}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Role",
+            "item": [
+                {
+                    "name": "Role.index",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/Role",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "Role"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Role.store",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/Role",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "Role"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Role.show",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/Role\/{Role}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "Role",
+                                "{Role}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Role.update",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/Role\/{Role}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "Role",
+                                "{Role}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Role.destroy",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/Role\/{Role}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "Role",
+                                "{Role}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
