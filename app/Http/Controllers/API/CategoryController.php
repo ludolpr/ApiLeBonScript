@@ -13,10 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // Retrieve all categories
         $categories = Category::all();
-        // Return the category information in JSON
-        return response()->json($categories, 200);
+        return response()->json($categories);
     }
 
     /**
@@ -36,7 +34,7 @@ class CategoryController extends Controller
         return response()->json([
             'status' => 'Success',
             'data' => $category,
-        ], 201);
+        ]);
     }
 
     /**
@@ -45,7 +43,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         // Return the category information in JSON
-        return response()->json($category, 200);
+        return response()->json($category);
     }
 
     /**

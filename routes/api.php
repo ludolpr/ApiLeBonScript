@@ -9,5 +9,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource("users", UserController::class);
 Route::apiResource("announcement", AnnouncementController::class);
-Route::apiResource("Category", CategoryController::class);
-Route::apiResource("Role", RoleController::class);
+Route::apiResource("category", CategoryController::class);
+Route::apiResource("role", RoleController::class);

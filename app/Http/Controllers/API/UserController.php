@@ -14,39 +14,40 @@ class UserController extends Controller
      */
     public function index()
     {
-        // Retrieve all users
         $users = User::all();
-        // Return the user information in JSON
-        return response()->json($users, 200);
+        return response()->json($users);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
         $request->validate([
             'name' => 'required|max:100',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
+            'picture' => 'nullable|max:50',
+            'zipcode' => 'required|numeric|digits:5',
+            'address' => 'required|max:150',
+            'town' => 'required|max:100',
+            'coords' => 'required|max:150',
+            'id_role' => 'sometimes|integer|exists:roles,id',
         ]);
 
+        // valeur par defaut
+        $roleId = $request->id_role ?? 1;
+
+        // Create user
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'picture' => $request->picture,
-            'zipcode' => $request->zipcode,
-            'address' => $request->address,
-            'town' => $request->town,
-            'coords' => $request->coords,
+            'name' => $request->name, 'email' => $request->email, 'password' => Hash::make($request->password), 'picture' => $request->picture, 'zipcode' => $request->zipcode, 'address' => $request->address, 'town' => $request->town, 'coords' => $request->coords, 'id_role' => $roleId, 
         ]);
 
-        // JSON informations !
+        // JSON response
         return response()->json([
             'status' => 'Success',
             'data' => $user,
-        ], 201);
+        ]);
     }
 
     /**
@@ -63,11 +64,18 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $request->validate([
-            'name' => 'required|max:100',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'nullable|min:8',
+        $request->validate(['name' => 'required|max:100', 'email' => 'required',
+            'password' => 'required|min:8',
+            'picture' => 'nullable|max:50',
+            'zipcode' => 'required|numeric|digits:5',
+            'address' => 'required|max:150',
+            'town' => 'required|max:100',
+            'coords' => 'required|max:150',
+            'id_role' => 'sometimes|integer|exists:roles,id',
         ]);
+
+        // valeur par defaut
+        $roleId = $request->id_role ?? 1;
 
         // Update the user
         $user->update([
@@ -79,6 +87,7 @@ class UserController extends Controller
             'address' => $request->address,
             'town' => $request->town,
             'coords' => $request->coords,
+            'id_role' => $roleId,
         ]);
 
         // Return the updated information in JSON

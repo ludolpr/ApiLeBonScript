@@ -13,30 +13,29 @@ class RoleController extends Controller
      */
     public function index()
     {
-        // Retrieve all roles
         $roles = Role::all();
-        // Return the role information in JSON
-        return response()->json($roles, 200);
+        return response()->json($roles);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Role $roles)
     {
         $request->validate([
-            'role' => 'required|max:50|unique:roles,role',
+            'role' => 'required|max:50',
         ]);
 
-        $role = Role::create([
-            'role' => $request->role,
+        $roles = Role::create([
+            'role' => $request->role
         ]);
 
         // JSON response
         return response()->json([
             'status' => 'Success',
-            'data' => $role,
-        ], 201);
+            'data' => $roles,
+        ]);
+        
     }
 
     /**
@@ -44,28 +43,25 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        // Return the role information in JSON
-        return response()->json($role, 200);
+        return response()->json($role);
     }
 
+   
+    
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Role $role)
     {
-        $request->validate([
-            'role' => 'required|max:50|unique:roles,role,' . $role->id,
+        // ---------------------------------------------
+        $request->validate(["role" => "required|max:50",
         ]);
 
-        // Update the role
-        $role->update([
-            'role' => $request->role,
-        ]);
+        $role->update($request->all());
+        // dd($request);
 
-        // Return the updated information in JSON
-        return response()->json([
-            'status' => 'Update OK',
-            'data' => $role,
+        return response()->json(["status" => "Mise à jour avec succèss",
+            "data" => $role
         ]);
     }
 

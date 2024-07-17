@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class AnnouncementController extends Controller
 {
@@ -16,25 +17,25 @@ class AnnouncementController extends Controller
         // Retrieve all announcements
         $announcements = Announcement::all();
         // Return the announcements information in JSON
-        return response()->json($announcements, 200);
+        return response()->json($announcements);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
         $request->validate([
             'title' => 'required|max:50',
             'description' => 'required|max:400',
             'picture' => 'nullable|max:255',
+            'id_category' => 'sometimes|integer|exists:categories,id',
+            'id_user' => 'sometimes|integer|exists:users,id'
         ]);
 
-        $announcement = Announcement::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'picture' => $request->picture,
-            'user_id' => $request->user()->id, // Assuming the user is authenticated
+        $announcement = Announcement::create(['title' => $request->title, 'description' => $request->description, 'picture' => $request->picture, 'id_user' => $request->id_user,
+            'id_category' => $request->id_category,
+
         ]);
 
         // JSON response
@@ -62,6 +63,8 @@ class AnnouncementController extends Controller
             'title' => 'required|max:50',
             'description' => 'required|max:400',
             'picture' => 'nullable|max:255',
+            'id_category' => 'sometimes|integer|exists:categories,id',
+            'id_user' => 'sometimes|integer|exists:users,id'
         ]);
 
         // Update the announcement
@@ -69,6 +72,8 @@ class AnnouncementController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'picture' => $request->picture,
+            'id_user' => $request->id_user,
+            'id_category' => $request->id_category,
         ]);
 
         // Return the updated information in JSON
