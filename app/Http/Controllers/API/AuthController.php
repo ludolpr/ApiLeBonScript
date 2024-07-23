@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Carbon\Factory;
+use Carbon\Carbon;
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,41 +20,50 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-
+        // Validation des champs
         $request->validate([
             'name' => 'required|max:100',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
-            'picture' => 'nullable|max:50',
             'zipcode' => 'required|numeric|digits:5',
             'address' => 'required|max:150',
             'town' => 'required|max:100',
             'coords' => 'required|max:150',
             'id_role' => 'sometimes|integer|exists:roles,id',
         ]);
-        // valeur par defaut
+
+        // Valeur par défaut pour le rôle
         $roleId = $request->id_role ?? 1;
 
+        // Gestion de l'image de profil
+        $filename = "";
+        if ($request->hasFile('picture')) {
+            $filenameWithExt = $request->file('picture')->getClientOriginalName();
+            $filenameWithoutExt = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('picture')->getClientOriginalExtension();
+            $filename = $filenameWithoutExt . '_' . time() . '.' . $extension;
+            $path = $request->file('picture')->storeAs('public/uploads', $filename);
+        } else {
+            $filename = null;
+        }
 
+        // Création de l'utilisateur
         $user = $this->user::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'picture' => $request->picture,
+            'picture' => $filename,
             'zipcode' => $request->zipcode,
             'address' => $request->address,
             'town' => $request->town,
             'coords' => $request->coords,
             'id_role' => $roleId,
-
         ]);
-        // dd($user);
 
-        //bad request ---> 
-        // $token = JWTAuth::fromUser($user);
-
+        // Génération du token JWT
         $token = auth()->login($user);
 
+        // Réponse JSON avec le token
         return response()->json([
             'meta' => [
                 'code' => 200,
@@ -66,7 +75,7 @@ class AuthController extends Controller
                 'access_token' => [
                     'token' => $token,
                     'type' => 'Bearer',
-                    'expires_in' => auth()->factory()->getTTL() * 3600,
+                    'expires_in' => auth()->factory()->getTTL() * 60,
                 ],
             ],
         ]);
@@ -74,11 +83,13 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        // Validation des champs
         $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
 
+        // Tentative de connexion
         if (!$token = auth()->attempt($request->only('email', 'password'))) {
             return response()->json([
                 'meta' => [
@@ -90,6 +101,7 @@ class AuthController extends Controller
             ], 401);
         }
 
+        // Réponse JSON avec le token
         return response()->json([
             'meta' => [
                 'code' => 200,
@@ -101,7 +113,7 @@ class AuthController extends Controller
                 'access_token' => [
                     'token' => $token,
                     'type' => 'Bearer',
-                    'expires_in' => auth()->factory()->getTTL() * 3600,
+                    'expires_in' => auth()->factory()->getTTL() * 60,
                 ],
             ],
         ]);
@@ -109,6 +121,7 @@ class AuthController extends Controller
 
     public function logout()
     {
+        // Récupération du token JWT
         $token = JWTAuth::getToken();
         if (!$token) {
             return response()->json([
@@ -121,8 +134,10 @@ class AuthController extends Controller
             ], 401);
         }
 
+        // Invalidation du token
         JWTAuth::invalidate($token);
 
+        // Réponse JSON après déconnexion
         return response()->json([
             'meta' => [
                 'code' => 200,

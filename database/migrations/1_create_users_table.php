@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name', 50);
             $table->string('email', 120)->unique();
             $table->string('password', 255);
-            $table->string('picture', 50)->nullable();
+            $table->string('picture', 255)->nullable();
             $table->decimal('zipcode', 5, 0);
             $table->string('address', 150);
             $table->string('town', 100);
